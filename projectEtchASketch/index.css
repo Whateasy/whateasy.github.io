@@ -1,0 +1,275 @@
+html {
+    box-sizing: border-box;
+    position: relative;
+    min-height: 100%;
+    font-family: 'Yeseva One', cursive;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1  {
+    text-align: center;
+    font-weight: bold;
+}
+
+:root {
+    --colNum: 10;
+    --divColor: #E66465;
+    --divOpacity: 1;
+}
+
+.container {
+    padding-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+
+.controllers {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-around;
+    column-gap: 30px;
+    flex: 1 1 auto;
+
+}
+
+.controllers h2 {
+    margin-top: 0px;
+}
+
+.gridSizeWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    column-gap: 20px;
+}
+
+#gridSizeRange {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 170px;
+    background: cadetblue;
+    border-radius: 5px;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+}
+
+#gridSizeRange:hover{
+    opacity: 1;
+}
+
+#gridSizeRange::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 2px 0px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background:white;
+    cursor: pointer;
+}
+
+#gridSizeRange::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background:white;
+    cursor: pointer;
+}
+
+#gridSizeLabel {
+    font-size: 18px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.colorContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+#colorPickerWrapper {
+    border-radius: 100%;
+    /*background-color: transparent;*/
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+input[type=color] {
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #0000001A;
+    transform: scale(1.5);
+    opacity: 1;
+}
+input[type=color]:hover {
+    opacity: 0.7;
+}
+
+input[type=color]:checked {
+    opacity: 1;
+}
+
+
+#colorPickerLabel {
+    color: black;
+    padding-left: 20px;
+    font-size: 16px;
+}
+
+.rainbowSelector{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.rainbow {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    background: linear-gradient(
+            90deg,
+            rgba(255, 0, 0, 1) 0%,
+            rgba(255, 154, 0, 1) 10%,
+            rgba(208, 222, 33, 1) 20%,
+            rgba(79, 220, 74, 1) 30%,
+            rgba(63, 218, 216, 1) 40%,
+            rgba(47, 201, 226, 1) 50%,
+            rgba(28, 127, 238, 1) 60%,
+            rgba(95, 21, 242, 1) 70%,
+            rgba(186, 12, 248, 1) 80%,
+            rgba(251, 7, 217, 1) 90%,
+            rgba(255, 0, 0, 1) 100%
+    );
+    opacity: 0.5;
+    transition: 0.2s all linear;
+}
+
+.rainbow:hover {
+    opacity: 1;
+}
+
+.rainbowSelector label {
+    padding-left: 20px;
+    font-size: 16px;
+}
+
+.rainbow:checked {
+    opacity: 1;
+    border: 1px solid blueviolet;
+}
+
+
+.eraserGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+
+input[type=radio] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    transition: 0.2s all linear;
+}
+
+input[type=radio]:checked + label {
+    background-color: #C85F31;
+    /*border: 2px solid #852614;*/
+}
+
+.eraserGroup label {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
+    padding: 5px 30px;
+    color: white;
+    background-color: darkslategray;
+    border-radius: 5px;
+    border: none;
+    height: 2rem;
+    width: 170px;
+    font-size: 18px;
+    transition: 0.2s all linear;
+}
+
+.eraserGroup label:hover {
+    background-color: transparent;
+    color: darkslategrey;
+    border: 2px solid darkslategrey;
+}
+
+.pixelGridWrapper {
+    display: flex;
+}
+
+.pixelGrid {
+    flex: 1.5 1 auto;
+    width: 400px;
+    display: grid;
+    grid-template-columns: repeat(var(--colNum), 1fr);
+    border: 3px solid darkolivegreen;
+    box-shadow: -0.5em 0 .4em darkslategrey;
+}
+
+.pixelGrid div {
+    background-color: transparent;
+    aspect-ratio: 1;
+    opacity: var(--divOpacity);
+    transition: background-color 0.2s  linear, opacity 0.7s ease-out;
+}
+
+.pixelGrid div:hover {
+    background-color: var(--divColor);
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+    height: 2rem;
+    padding: 15px 20px 0px;
+    color: white;
+    font-weight: bold;
+    font-size: smaller;
+    background-color: cadetblue;
+    text-align: center;
+}
+
+@media screen and (min-width: 900px){
+    .container {
+        margin: 20px 50px;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    .pixelGrid {
+        flex: 3 1 auto;
+        margin-top: 20px;
+        max-width: 960px;
+    }
+    .controllers {
+        flex: 2 1 auto;
+        flex-direction: column-reverse;
+        margin-top: 20px;
+        align-items: center;
+    }
+
+}

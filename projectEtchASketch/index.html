@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch A Sketch</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+    <script src="index.js" defer></script>
+</head>
+
+<body>
+<h1>
+    Etch-A-Sketch
+</h1>
+
+<div class="container">
+<div class="controllers">
+
+    <div class="controllers-left">
+    <h3>Choose a grid size</h3>
+    <div class="gridSizeWrapper">
+    <input id="gridSizeRange" type="range" min="1" max="64" step="1" value="16" onchange="updateGridSizeLabel()">
+    <label id="gridSizeLabel">1 x 1</label>
+    </div>
+        <div class="eraserGroup">
+            <div class="radio1">
+                <input type="radio" class='eraserType' name="eraserType" value="draw" id="draw" checked>
+                <label for="draw">Draw</label>
+            </div>
+            <div class="radio2">
+                <input type="radio" class='eraserType' name="eraserType" value="clearOne" id="clearOne" >
+                <label for="clearOne">Eraser</label>
+            </div>
+            <div class="radio3">
+                <input type="radio" class='eraserType' name="eraserType" value="clearAll" id="clearAll" onchange="clearAll()">
+                <label for="clearAll">Clear All</label>
+            </div>
+        </div>
+    </div>
+    <div class="controllers-right">
+        <h3> Color Selector</h3>
+        <div class="colorContainer">
+            <div id='colorPickerWrapper'>
+                <input id='colorPicker' type="color" value='#e66465' onmousedown="updateColorLabel()">
+            </div>
+            <label id="colorPickerLabel">Red</label>
+        </div>
+        <div class="rainbowSelector">
+            <input id='rainbow' class="rainbow" type="checkbox" onchange="checkRainbowMode()">
+            <label for="rainbow">Rainbow</label>
+        </div>
+
+
+    </div>
+
+</div>
+    <div class="pixelGrid">
+    </div>
+
+</div>
+
+<footer> Made Specially for &copy The Odin Project 2022</footer>
+</body>
+</html>
