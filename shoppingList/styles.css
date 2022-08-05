@@ -11,12 +11,13 @@ html {
 .container {
     display: flex;
     flex-direction: column;
-    justify-items: center;
-
+    align-items: center;
 }
 
 h1 {
     text-align: center;
+    font-size: 2.5em;
+    font-family: 'VT323', monospace;
 }
 
 ul {
@@ -24,18 +25,62 @@ ul {
     display: flex;
     flex-direction: column;
     padding-left: 0;
+    justify-items: center;
 }
 
-h2 {
-    font-size: medium;
+
+.shoppingList {
+    display: flex;
 }
 
+
+.shoppingList div {
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.shoppingList input[type='checkbox'] {
+    -webkit-appearance: none;
+    width: 25px;
+    height: 19px;
+    border: 2px solid coral;
+    transition: all .3s ease-in-out;
+}
+
+.shoppingList input[type='checkbox']:checked {
+    transform: rotateZ(180deg);
+    background: #C85F31;
+}
+
+
+.shoppingList .labelItems {
+    font-size: large;
+    padding-left: 20px;
+    font-family: 'Yeseva One', cursive;
+}
+
+.shoppingList .strikethrough {
+    font-size: large;
+    padding-left: 20px;
+    font-family: 'Yeseva One', cursive;
+    text-decoration: line-through;
+}
+
+
+.shoppingList .shoppingItemCategory {
+    padding-left: 10px;
+    font-family: 'VT323', monospace;
+}
 .itemList {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 0px 15px;
+    padding: 30px 15px;
+}
+
+.itemList h2 {
+    font-size: 1.2em;
 }
 
 .divForTypes {
@@ -44,4 +89,9 @@ h2 {
     justify-content: space-between;
     align-items: flex-start;
     padding-right: 15px;
+    font-family: 'VT323', monospace;
+}
+
+ footer {
+    font-family: 'Yeseva One', cursive;
 }

@@ -24,6 +24,14 @@ const cookingSauces = ['Heading:Cooking Sauces','Fancy Olive Oil', 'Cooking Oliv
 const household = ['Heading:Household','Washing-up Liquid', 'Dishwashing Tablets', 'Rinse Aid', 'Hand Wash Liquid', 'Toilet Paper', 'Paper Towels',
     'Toothpaste', 'Dental Floss', 'Sanitary Towels', 'Shower Gel', 'Toilet Cleaner', 'All Purpose Cleaner', 'Bathroom Cleaner', 'Drain Unblocker']
 
+
+export const displayOrder = new Map([['Meat', 1], ['Diary Eggs & Bakery', 2], ['Veggies', 3], ['Fruits', 4], ['Herbs', 5], ['Food Cupboard', 6],
+    ['Grains & Noodles',7], ['Dried Herbs & Spices', 8], ['Cooking Sauces', 9], ['Household', 10]])
+
+
+export const defaultList = ['Cured Meat', 'Black Beans', 'Peanut Butter', 'Bananas', 'Apples', 'Kohlrabi', 'Fennel', 'Lime', 'Lemon',
+    'Tomatoes', 'Avocado', 'Eggs', 'Milk', 'Bread', 'Side Ribs', 'Chicken Thighs', 'Chicken Breast']
+
 function createMap(...shoppingLists) {
     const shoppingItemByCategories = new Map();
     for(const list of shoppingLists){
