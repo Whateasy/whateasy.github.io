@@ -112,6 +112,7 @@ console.log(selectedShoppingList)
 //Event Listener to add strike-through format to the items that are ticked.
 function strikeOffList(){
     this.nextElementSibling.classList.toggle('strikethrough')
+    this.nextElementSibling.nextElementSibling.classList.toggle('strikethrough')
 }
 
 //sort the shopping list alphabetically and then according to the display order
