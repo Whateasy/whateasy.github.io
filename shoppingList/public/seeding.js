@@ -8,7 +8,7 @@ const veggie = ['Heading:Veggies', 'Fennel', 'Kohlrabi', 'Potatoes', 'Radish', '
 
 const fruits = ['Heading:Fruits','Apples', 'Bananas', 'Watermelon', 'Oranges', 'Pomelo']
 
-const foodCupboard = ['Heading:Food Cupboard','Tinned Tomatoes', 'Tinned Tuna', 'Anchovies', 'Olives', 'Capers', 'Banana Peppers',
+const foodCupboard = ['Heading:Pantry','Tinned Tomatoes', 'Tinned Tuna', 'Anchovies', 'Olives', 'Capers', 'Banana Peppers',
     'Tomato Purees', 'Black Beans', 'Butter Beans', 'Peanut Butter', 'Strawberry Jam' ]
 
 const grainsNoodles = ['Heading:Grains & Noodles','White Rice', 'Brown Rice', 'Quinoa', 'Pearl Barley', 'Bulgar Wheat', 'Couscous',
@@ -25,9 +25,8 @@ const household = ['Heading:Household','Washing-up Liquid', 'Dishwashing Tablets
     'Toothpaste', 'Dental Floss', 'Sanitary Towels', 'Shower Gel', 'Toilet Cleaner', 'All Purpose Cleaner', 'Bathroom Cleaner', 'Drain Unblocker']
 
 
-export const displayOrder = new Map([['Meat', 1], ['Diary Eggs & Bakery', 2], ['Veggies', 3], ['Fruits', 4], ['Herbs', 5], ['Food Cupboard', 6],
+export const displayOrder = new Map([['Veggies', 1], ['Fruits', 2],  ['Meat', 3], ['Diary Eggs & Bakery', 4], ['Herbs', 5], ['Pantry', 6],
     ['Grains & Noodles',7], ['Dried Herbs & Spices', 8], ['Cooking Sauces', 9], ['Household', 10]])
-
 
 export const defaultList = ['Cured Meat', 'Black Beans', 'Peanut Butter', 'Bananas', 'Apples', 'Kohlrabi', 'Fennel', 'Lime', 'Lemon',
     'Tomatoes', 'Avocado', 'Eggs', 'Milk', 'Bread', 'Side Ribs', 'Chicken Thighs', 'Chicken Breast']

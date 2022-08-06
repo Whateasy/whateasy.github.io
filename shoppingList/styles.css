@@ -33,15 +33,20 @@ ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    padding-left: 0;
+    padding-left: 0px;
     justify-items: center;
 }
 
 
 .shoppingList {
     display: flex;
-    padding: 0 10px;
+    padding: 0 50px;
+    width: 300px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 15px 0px;
+}
+
+.shoppingList ul {
+    margin-left: -20px;
 }
 
 .shoppingList div {
@@ -88,12 +93,22 @@ ul {
     text-decoration: line-through;
 }
 
+.selectionHeading {
+    padding-top: 15px;
+    font-family: 'VT323', monospace;
+    font-size: 1.3em;
+}
+
+.selectionHeading h2 {
+    margin: 10px;
+}
+
 .itemList {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 30px 15px;
+    padding: 10px 15px 40px;
 }
 
 .itemList h2 {
@@ -117,10 +132,22 @@ ul {
     transform: scale(1.3);
 }
 
-
-
+@media screen and (min-width: 600px) {
+    .itemList {
+        max-width: 700px;
+        column-gap: 20px;
+    }
+    .itemList h2 {
+        width: 200px;
+        font-size: 1.3em;
+    }
+    .divForTypes {
+        font-size: 1.2em;
+    }
+}
 
  footer {
     font-family: 'Yeseva One', cursive;
     text-align: center;
+    margin-top: auto;
 }

@@ -4,7 +4,7 @@ const shoppingItems = document.querySelector('.itemList')
 const divShoppingList = document.querySelector('.shoppingList')
 const selectedShoppingList = defaultList
 
-insertShoppingItems(shoppingCategoryByItems)
+insertOrderedShoppingItems(displayOrder, shoppingCategoryByItems)
 
 checkInputBox()
 
@@ -12,35 +12,42 @@ updateShoppingListSection()
 
 
 //Add pre-defined shopping items per category to the 'shoppingItems' section of the page
-function insertShoppingItems(shoppingCategoryByItems) {
-        shoppingCategoryByItems.forEach((category, key) => {
+//Display order is defined in the displayOrder list
+
+function insertOrderedShoppingItems (displayOrder, shoppingCategoryByItems) {
+    displayOrder.forEach((order, category) => {
+      console.log(order, category)
         const newUlDiv = document.createElement('div')
         newUlDiv.setAttribute('class', 'divForTypes')
         const newUl = document.createElement('ul')
         newUl.setAttribute('class','typeUl')
-            const newSubHeading = document.createElement('h2')
-            newSubHeading.textContent = key
-            newUlDiv.append(newSubHeading)
-        category.sort();
-        category.forEach(item => {
-                const newLi = document.createElement('li')
-                const newInput = createInputElement(item, 'shoppingItems', inputBoxToShoppingList)
-                const newLabel = createInputLabel(item, 'labelItems')
-                newLi.append(newInput)
-                newLi.appendChild(newLabel)
-                newUl.appendChild(newLi)
+        const newSubHeading = document.createElement('h2')
+        newSubHeading.textContent = category
+        newUlDiv.append(newSubHeading)
+        const itemList = shoppingCategoryByItems.get(category)
+        itemList.sort()
+        itemList.forEach(item => {
+            const newLi = document.createElement('li')
+            const newInput = createInputElement(item, 'shoppingItems', inputBoxToShoppingList)
+            const newLabel = createInputLabel(item, 'labelItems')
+            newLi.append(newInput)
+            newLi.appendChild(newLabel)
+            newUl.appendChild(newLi)
         })
         newUlDiv.append(newUl)
         shoppingItems.append(newUlDiv)
     })
 }
 
+
 // tick the checkbox for items that are in the 'selectedShoppingList', which is pre-populated by a default list when web page loads.
 function checkInputBox () {
     const allInputCheckBoxes = document.querySelectorAll('.shoppingItems')
-    for(const each of allInputCheckBoxes){
-        if(selectedShoppingList.includes(each.value))
-            each.checked=true
+    console.log(allInputCheckBoxes)
+    for (const each of allInputCheckBoxes) {
+        if (selectedShoppingList.includes(each.value)) {
+            each.checked = true
+        }
     }
 }
 
@@ -66,7 +73,6 @@ function updateShoppingListSection() {
     })
     divShoppingList.append(newUl)
 }
-
 
 //helper function to create the input elements
 function createInputElement(name, className, eventListener){
