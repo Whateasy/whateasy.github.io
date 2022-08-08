@@ -2,7 +2,10 @@ import {shoppingItemByCategories, shoppingCategoryByItems, displayOrder, default
 
 const shoppingItems = document.querySelector('.itemList')
 const divShoppingList = document.querySelector('.shoppingList')
-const selectedShoppingList = defaultList
+let selectedShoppingList = JSON.parse(localStorage.getItem('shoppingList')) || defaultList
+const btnRestoreDefaultList = document.querySelector('.btnDefaultList')
+
+// localStorage.removeItem('shoppingList')
 
 insertOrderedShoppingItems(displayOrder, shoppingCategoryByItems)
 
@@ -10,6 +13,7 @@ checkInputBox()
 
 updateShoppingListSection()
 
+btnRestoreDefaultList.addEventListener('click', revertToDefaultList)
 
 //Add pre-defined shopping items per category to the 'shoppingItems' section of the page
 //Display order is defined in the displayOrder list
@@ -104,14 +108,13 @@ function createSpan(name, className){
 
 //Event Listener for input box. When a box is ticked, it is added to the 'selectedShoppingList'.
 function inputBoxToShoppingList(){
-    console.log(selectedShoppingList)
     if (this.checked && selectedShoppingList.indexOf(this.value)===-1 ) {
             selectedShoppingList.splice(0, 0, this.value)
     } else if (!this.checked && selectedShoppingList.indexOf(this.value)!==-1){
             const indexStart= selectedShoppingList.indexOf(this.value)
             selectedShoppingList.splice(indexStart, 1)
     }
-console.log(selectedShoppingList)
+    localStorage.setItem('shoppingList', JSON.stringify(selectedShoppingList))
     updateShoppingListSection()
 }
 
@@ -119,6 +122,15 @@ console.log(selectedShoppingList)
 function strikeOffList(){
     this.nextElementSibling.classList.toggle('strikethrough')
     this.nextElementSibling.nextElementSibling.classList.toggle('strikethrough')
+}
+
+//Event Listener to remove cached shopping list and restore to default list. The page reloads
+
+function revertToDefaultList(){
+    console.log('i have used default list')
+    localStorage.removeItem('shoppingList')
+    selectedShoppingList = defaultList
+    location.reload()
 }
 
 //sort the shopping list alphabetically and then according to the display order
@@ -129,3 +141,4 @@ function sortSelectedShoppingList(selectedShoppingList){
     })
     return mappedSelectedShoppingList.sort((a, b) => a.order - b.order)
 }
+
