@@ -6,7 +6,7 @@ const diaryEggsBakery = ['Heading:Diary Eggs & Bakery', 'Eggs', 'Bread', 'Milk',
 const veggie = ['Heading:Veggies', 'Fennel', 'Kohlrabi', 'Potatoes', 'Radish', 'Cucumber', 'Tomatoes', 'Lemon', 'Lime', 'Avocado', 'Cauliflower',
     'Broccoli', 'Asparagus', 'Celeriac', 'Rutabaga']
 
-const fruits = ['Heading:Fruits','Apples', 'Bananas', 'Watermelon', 'Oranges', 'Pomelo']
+const fruits = ['Heading:Fruits','Apples', 'Bananas', 'Watermelon', 'Oranges', 'Pomelo', 'Grapes']
 
 const foodCupboard = ['Heading:Pantry','Tinned Tomatoes', 'Tinned Tuna', 'Anchovies', 'Olives', 'Capers', 'Banana Peppers',
     'Tomato Purees', 'Black Beans', 'Butter Beans', 'Peanut Butter', 'Strawberry Jam' ]
@@ -14,18 +14,20 @@ const foodCupboard = ['Heading:Pantry','Tinned Tomatoes', 'Tinned Tuna', 'Anchov
 const grainsNoodles = ['Heading:Grains & Noodles','White Rice', 'Brown Rice', 'Quinoa', 'Pearl Barley', 'Bulgar Wheat', 'Couscous',
     'Buccatini', 'Rigatoni', 'Lasagne Sheets', 'Pappardella', 'Udon', 'Egg Noodles' ]
 
-const herb = ['Heading:Herbs','Fresh Mint', 'Parsley', 'Thyme', 'Sage', 'Cilantro', 'Rosemary']
+const herb = ['Heading:Herbs','Fresh Mint', 'Parsley', 'Thyme', 'Sage', 'Cilantro', 'Rosemary', 'Lemongrass', 'Ginger']
 
-const driedHerbSpices = ['Heading:Dried Herbs & Spices','Paprika', 'Cumin', 'Oregano', 'Salt', 'Black Pepper', 'Sugar']
+const driedHerbSpices = ['Heading:Dried Herbs & Spices','Paprika', 'Cumin', 'Oregano', 'Salt', 'Black Pepper', 'Sugar', 'Ground Coriander', 'Ground Ginger', 'Chipotle']
 
 const cookingSauces = ['Heading:Cooking Sauces','Fancy Olive Oil', 'Cooking Olive Oil', 'Grapeseeds Oil', 'Balsamic Vinegar', 'Soy Sauce', 'Chipotle Sauce',
     'White Wine Vinegar', 'Franks Sauce', 'Mustard', 'Ketchup', 'Mirin', 'Fish Sauce', 'Mayonnaise' ]
 
 const household = ['Heading:Household','Washing-up Liquid', 'Dishwashing Tablets', 'Rinse Aid', 'Hand Wash Liquid', 'Toilet Paper', 'Paper Towels',
-    'Toothpaste', 'Dental Floss', 'Sanitary Towels', 'Shower Gel', 'Toilet Cleaner', 'All Purpose Cleaner', 'Bathroom Cleaner', 'Drain Unblocker']
+    'Toothpaste', 'Dental Floss', 'Sanitary Towels', 'Shower Gel', 'Toilet Cleaner', 'All Purpose Cleaner', 'Bathroom Cleaner', 'Drain Unblocker', 'Laundry Tablets']
+
+const freezer = ['Heading:Freezer', 'Frozen Sweetcorn', 'Frozen Peas', 'Ice Cream']
 
 
-export const displayOrder = new Map([['Veggies', 1], ['Fruits', 2],  ['Meat', 3], ['Diary Eggs & Bakery', 4], ['Herbs', 5], ['Pantry', 6],
+export const displayOrder = new Map([['Veggies', 1], ['Fruits', 2],  ['Meat', 3], ['Diary Eggs & Bakery', 4], ['Freezer', 5], ['Herbs', 6], ['Pantry', 7],
     ['Grains & Noodles',7], ['Dried Herbs & Spices', 8], ['Cooking Sauces', 9], ['Household', 10]])
 
 export const defaultList = ['Cured Meat', 'Black Beans', 'Peanut Butter', 'Bananas', 'Apples', 'Kohlrabi', 'Fennel', 'Lime', 'Lemon',
@@ -46,7 +48,7 @@ function createMap(...shoppingLists) {
     return shoppingItemByCategories
 }
 
-export const shoppingItemByCategories = createMap(meatList, diaryEggsBakery, veggie, fruits, herb, foodCupboard, grainsNoodles, driedHerbSpices, cookingSauces, household)
+export const shoppingItemByCategories = createMap(meatList, diaryEggsBakery, veggie, fruits, herb, foodCupboard, grainsNoodles, driedHerbSpices, cookingSauces, household, freezer)
 
 function createShoppingCategoryByItems(...shoppingLists){
     const shoppingCategoryByItems = new Map();
@@ -65,4 +67,4 @@ function createShoppingCategoryByItems(...shoppingLists){
     return shoppingCategoryByItems
 }
 
-export const shoppingCategoryByItems = createShoppingCategoryByItems(meatList, diaryEggsBakery, veggie, fruits, herb, foodCupboard, grainsNoodles, driedHerbSpices, cookingSauces, household)
+export const shoppingCategoryByItems = createShoppingCategoryByItems(meatList, diaryEggsBakery, veggie, fruits, herb, foodCupboard, grainsNoodles, driedHerbSpices, cookingSauces, household, freezer)

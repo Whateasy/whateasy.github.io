@@ -4,16 +4,22 @@ const shoppingItems = document.querySelector('.itemList')
 const divShoppingList = document.querySelector('.shoppingList')
 let selectedShoppingList = JSON.parse(localStorage.getItem('shoppingList')) || defaultList
 const btnRestoreDefaultList = document.querySelector('.btnDefaultList')
+const btnClearChecked = document.querySelector('.btnClearChecked')
+let strikeThroughList = JSON.parse(localStorage.getItem('strikeThroughList')) || []
 
-// localStorage.removeItem('shoppingList')
 
 insertOrderedShoppingItems(displayOrder, shoppingCategoryByItems)
 
-checkInputBox()
+checkInputBox();
 
 updateShoppingListSection()
 
+checkOffAgainstList(strikeThroughList)
+
 btnRestoreDefaultList.addEventListener('click', revertToDefaultList)
+
+btnClearChecked.addEventListener('click', clearChecksFromList )
+
 
 //Add pre-defined shopping items per category to the 'shoppingItems' section of the page
 //Display order is defined in the displayOrder list
@@ -47,7 +53,6 @@ function insertOrderedShoppingItems (displayOrder, shoppingCategoryByItems) {
 // tick the checkbox for items that are in the 'selectedShoppingList', which is pre-populated by a default list when web page loads.
 function checkInputBox () {
     const allInputCheckBoxes = document.querySelectorAll('.shoppingItems')
-    console.log(allInputCheckBoxes)
     for (const each of allInputCheckBoxes) {
         if (selectedShoppingList.includes(each.value)) {
             each.checked = true
@@ -66,7 +71,7 @@ function updateShoppingListSection() {
     console.log('this is sorted listed', sortedSelectedShoppingList)
     sortedSelectedShoppingList.forEach(item =>{
         const newDiv = document.createElement('div')
-        const newInput = createInputElement(item.item, 'shoppingItems', strikeOffList)
+        const newInput = createInputElement(item.item, 'shoppingListItem', strikeOffList)
         const newLabel = createInputLabel(item.item, 'labelItems')
         const newSpan = createSpan(item.category, 'shoppingItemCategory')
         newSpan.textContent = item.category
@@ -77,6 +82,20 @@ function updateShoppingListSection() {
     })
     divShoppingList.append(newUl)
 }
+
+
+//strike through the items in the shopping list that were already checked against a list
+function checkOffAgainstList(strikeThroughList) {
+    const allInputCheckBoxes = document.querySelectorAll('.shoppingListItem')
+    for (const each of allInputCheckBoxes) {
+        if (strikeThroughList.includes(each.value)) {
+            each.checked = true
+            each.nextElementSibling.classList.toggle('strikethrough')
+            each.nextElementSibling.nextElementSibling.classList.toggle('strikethrough')
+        }
+    }
+}
+
 
 //helper function to create the input elements
 function createInputElement(name, className, eventListener){
@@ -98,6 +117,7 @@ function createInputLabel(name, className){
     return newLabel
 }
 
+//helper function to create the span for inputs
 function createSpan(name, className){
     const newSpan = document.createElement('span')
     newSpan.textContent = name
@@ -106,7 +126,7 @@ function createSpan(name, className){
 }
 
 
-//Event Listener for input box. When a box is ticked, it is added to the 'selectedShoppingList'.
+//Event Listener for input box in the shopping categories section of the page. When a box is ticked, it is added to the 'selectedShoppingList'.
 function inputBoxToShoppingList(){
     if (this.checked && selectedShoppingList.indexOf(this.value)===-1 ) {
             selectedShoppingList.splice(0, 0, this.value)
@@ -116,20 +136,35 @@ function inputBoxToShoppingList(){
     }
     localStorage.setItem('shoppingList', JSON.stringify(selectedShoppingList))
     updateShoppingListSection()
-}
-
-//Event Listener to add strike-through format to the items that are ticked.
-function strikeOffList(){
-    this.nextElementSibling.classList.toggle('strikethrough')
-    this.nextElementSibling.nextElementSibling.classList.toggle('strikethrough')
+    checkOffAgainstList(strikeThroughList)
 }
 
 //Event Listener to remove cached shopping list and restore to default list. The page reloads
 
 function revertToDefaultList(){
-    console.log('i have used default list')
     localStorage.removeItem('shoppingList')
     selectedShoppingList = defaultList
+    location.reload()
+}
+
+//Event Listener to add strike-through format to the items that are checked on the shopping list section.
+function strikeOffList(){
+    this.nextElementSibling.classList.toggle('strikethrough')
+    this.nextElementSibling.nextElementSibling.classList.toggle('strikethrough')
+    if(this.checked && strikeThroughList.indexOf(this.value)===-1){
+        strikeThroughList.splice(0, 0, this.value)
+    } else if(!this.checked && strikeThroughList.indexOf(this.value)!==-1){
+        const indexStart = strikeThroughList.indexOf(this.value)
+        strikeThroughList.splice(indexStart, 1)
+    }
+    localStorage.setItem('strikeThroughList', JSON.stringify(strikeThroughList))
+}
+
+//Event Listener to remove all checks from the shopping list. The page reloads
+
+function clearChecksFromList(){
+    localStorage.removeItem('strikeThroughList')
+    strikeThroughList = []
     location.reload()
 }
 

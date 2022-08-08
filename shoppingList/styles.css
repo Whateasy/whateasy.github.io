@@ -12,7 +12,7 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 20px 20px;
 }
 
 h1 {
@@ -37,16 +37,25 @@ ul {
     justify-items: center;
 }
 
-.btnDefaultList {
+.buttons {
+    display: inline-block;
+}
+
+.buttons button {
     border-radius: 5px;
     padding: 5px 15px;
     margin-bottom: 20px;
-    background-color: darkslategrey;
+    background-color: #C85F31;
     border: none;
     color: white;
     font-family: 'VT323', monospace;
     font-size: 1.3em;
     transition: all 0.5s linear;
+}
+
+
+.buttons .btnDefaultList {
+    background-color: darkslategrey;
 }
 
 .btnDefaultList:hover {
@@ -61,6 +70,16 @@ ul {
     /* Moving button 4px to y-axis */
 }
 
+.btnClearChecked:active {
+    background-color: #E66465;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+    /* Moving button 4px to y-axis */
+}
+
+.btnClearChecked:hover {
+    background-color: #E66465;
+}
 
 
 .shoppingList {
