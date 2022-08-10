@@ -4,6 +4,7 @@ const shoppingItems = document.querySelector('.itemList')
 const divShoppingList = document.querySelector('.shoppingList')
 let selectedShoppingList = JSON.parse(localStorage.getItem('shoppingList')) || defaultList
 const btnRestoreDefaultList = document.querySelector('.btnDefaultList')
+const btnClearAllList = document.querySelector('.btnClearAllList')
 const btnClearChecked = document.querySelector('.btnClearChecked')
 let strikeThroughList = JSON.parse(localStorage.getItem('strikeThroughList')) || []
 
@@ -17,6 +18,8 @@ updateShoppingListSection()
 checkOffAgainstList(strikeThroughList)
 
 btnRestoreDefaultList.addEventListener('click', revertToDefaultList)
+
+btnClearAllList.addEventListener('click', clearAllFromList)
 
 btnClearChecked.addEventListener('click', clearChecksFromList )
 
@@ -56,6 +59,8 @@ function checkInputBox () {
     for (const each of allInputCheckBoxes) {
         if (selectedShoppingList.includes(each.value)) {
             each.checked = true
+        } else {
+            each.checked = false
         }
     }
 }
@@ -158,6 +163,16 @@ function strikeOffList(){
         strikeThroughList.splice(indexStart, 1)
     }
     localStorage.setItem('strikeThroughList', JSON.stringify(strikeThroughList))
+}
+
+
+//Event Listener to remove everything from the shopping list.
+function clearAllFromList(){
+    while (divShoppingList.firstChild){
+        divShoppingList.removeChild(divShoppingList.firstChild)
+    }
+    selectedShoppingList = []
+    checkInputBox()
 }
 
 //Event Listener to remove all checks from the shopping list. The page reloads

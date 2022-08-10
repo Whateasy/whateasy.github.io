@@ -53,34 +53,33 @@ ul {
     transition: all 0.5s linear;
 }
 
-
 .buttons .btnDefaultList {
     background-color: darkslategrey;
 }
 
-.btnDefaultList:hover {
-    background-color: seagreen;
+.buttons .btnClearAllList {
+    background-color: cadetblue;
 }
 
-.btnDefaultList:active {
+.buttons button:active {
         /*transform: scale(1.2);*/
-    background-color: seagreen;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
     /* Moving button 4px to y-axis */
 }
 
-.btnClearChecked:active {
-    background-color: #E66465;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-    /* Moving button 4px to y-axis */
+.btnDefaultList:active, .btnDefaultList:hover {
+    background-color: seagreen ;
 }
 
-.btnClearChecked:hover {
-    background-color: #E66465;
+.btnClearAllList:active, .btnClearAllList:hover {
+    /*transform: scale(1.2);*/
+    background-color: powderblue;
 }
 
+.btnClearChecked:active, .btnClearChecked:hover {
+    background-color: #E66465;
+}
 
 .shoppingList {
     display: flex;
