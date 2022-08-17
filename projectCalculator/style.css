@@ -1,0 +1,87 @@
+html {
+    box-sizing: border-box;
+    position: relative;
+    min-height: 100%;
+    font-family: 'Baloo Tamma 2', cursive;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.container  {
+
+}
+
+h1 {
+    margin-left: 50px;
+}
+
+.display {
+    display: flex;
+    flex-direction: column;
+    max-width: 250px;
+    padding: 20px 15px;
+    margin: 0 30px;
+    border-radius: 5%;
+    background-color: black;
+
+}
+
+.results {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    max-width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 2.5em;
+    font-weight: 500 ;
+}
+
+.keyPads {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    max-width: 250px;
+    column-gap: 11px;
+    row-gap: 10px;
+}
+
+.keyPads button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    font-size: 1.2em;
+    border: none;
+    background-color: #414A4C;
+    color: white;
+    flex: 1 1 auto;
+}
+
+.keyPads :last-child {
+    flex: 16.4 1 auto;
+    border-radius: 25%/45%;
+}
+
+.keyPads .specialChar {
+    background-color: darkgrey;
+}
+
+.keyPads .operator{
+    background-color: darkorange;
+}
+
+.keyPads .highlight{
+    background-color: #F9FAF8;
+    color: darkorange;
+}
+
+.keyPads button:hover {
+    transform: scale(1.1);
+}

@@ -43,13 +43,13 @@ ul {
 
 .buttons button {
     border-radius: 5px;
-    padding: 5px 15px;
+    padding: 5px 10px;
     margin-bottom: 20px;
     background-color: #C85F31;
     border: none;
     color: white;
     font-family: 'VT323', monospace;
-    font-size: 1.3em;
+    font-size: 1.2em;
     transition: all 0.5s linear;
 }
 
