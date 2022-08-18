@@ -15,7 +15,7 @@ function multiply (a, b) {
 }
 
 function divide (a, b) {
-    return (a / b).toFixed(8)
+    return a / b
 }
 
 function equal (a=1, b=1){
@@ -27,26 +27,32 @@ const defaultDisplay = '0'
 results.textContent = defaultDisplay
 
 const keyPads = document.querySelector('.keyPads')
+const keys = ['0', '.', '=', '1', '2', '3', '+','4', '5', '6','-', '7', '8', '9', '\u00d7','C', '+/-', '%', '\u00f7'].reverse()
 const operators = new Map([['\u00f7', divide],['\u00d7', multiply], ['-', subtract],  ['+', add],['=', equal]])
-// const operators2 = new Map([[divide, '\u00f7'],[ multiply, '\u00d7'], [subtract,'-', ],  [add, '+' ],['equal','=', ]])
-// const operatorsArray = Array.from(operators2.values())
 const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']
 const specialChar = ['C', '+/-', '%']
-let tempNumStorage = [];
-let tempOperation = [];
-let tempToggleEl, waitForNumber, tempResults
-let whatHasBeenPressed = []
-let decimals = false
-let acCounter = 0
+const keyBoardToKeysMapping = new Map([['/', '\u00f7'],['Backspace', 'C'], ['Enter', '=']])
+let tempNumStorage, tempOperation,tempToggleEl, waitForNumber, tempResults, whatHasBeenPressed,
+    decimals, acCounter, multiDigits
 
-console.log('tempNumStorage', tempNumStorage)
-console.log('tempNumOperation', tempOperation)
+function reload(){
+    tempNumStorage = [];
+    tempOperation = [];
+    whatHasBeenPressed = []
+    tempToggleEl = undefined;
+    tempResults = ''
+    acCounter = 0
+    waitForNumber = false;
+    decimals = false
+    multiDigits = false
+}
+
+reload()
 
 insertKeysToKeyPad()
 
 //function to create input buttons for the key pads
 function insertKeysToKeyPad () {
-    const keys = ['0', '.', '=', '1', '2', '3', '+','4', '5', '6','-', '7', '8', '9', '\u00d7','C', '+/-', '%', '\u00f7'].reverse()
     keys.forEach(key =>{
         const inputKey = document.createElement('button')
         let className;
@@ -71,63 +77,95 @@ function setAttributes (element, attributes) {
     }
 }
 
+//event listeners to route the key pressed to the appropriate actions
 function iPressed(){
     whatHasBeenPressed.push(this.value)
     if(tempToggleEl !== undefined ){
     tempToggleEl.classList.toggle('highlight')
         tempToggleEl = undefined
     }
+    //several parameters need to be reset from numbers and the all clear vs clear button differentiation
+    //operator key being pressed is a signal to indicate the number input step has finished
     if (operators.has(this.value)){
         console.log('I am in operator route')
+        decimals = false;
+        document.getElementById('.').disabled = false;
+        acCounter = 0
+        multiDigits = false
+        document.getElementById('C').textContent = 'C';
+        //flag here to perform a calculation if previous operator has the priority
+        // and was just waiting for the numbers to be pressed
+        if(waitForNumber){
+            tempResults = popFormula()
+            tempNumStorage.push(tempResults)
+            waitForNumber = false
+        }
         justOperator(this)
     } else if (numbers.includes(this.value)){
-        acCounter = 0;
         console.log('I am in number route')
+        acCounter = 0;
         justNumbers(this)
     } else {
         console.log('I am in special route')
+        decimals = false;
+        document.getElementById('.').disabled = false;
+        multiDigits = false;
         iamSpecial(this)
     }
     console.log('What has been pressed:',whatHasBeenPressed)
 }
 
+//the logic here is to ensure we control the number of digits shown on screen.
 function showOnDisplay(input) {
-    results.textContent = input
+    let modInput;
+    typeof input === 'number' ? modInput = input.toString().split('') : modInput = input.split('');
+    if (modInput.length <= 9) {
+        results.textContent = modInput.join('');
+    } else {
+        const slicedInput = modInput.slice(0, 10)
+        if (modInput[10] * 1 > 5) {
+            slicedInput.push(slicedInput.pop() * 1 + 1)
+        }
+        results.textContent = slicedInput.join('');
+    }
 }
 
 function justNumbers(input) {
-    if(input.value === '.' && !decimals){
+    acCounter = 0;
+    document.getElementById('C').textContent = 'C';
+    //this route disables the decimal button after it has been pressed once
+    if(input.value === '.' && !decimals) {
         decimals = true
-        let revisedNum = tempNumStorage.pop();
-        revisedNum = revisedNum.toString()+input.value;
-        showOnDisplay(revisedNum)
-        // revisedNum = revisedNum * 1
-        console.log(revisedNum)
-        tempNumStorage.push(revisedNum)
-        console.log(tempNumStorage)
-    } else if(decimals){
+        input.disabled = true;
+        //logic here is to ensure multiple digits (including decimals) are treated as one number
+        if(multiDigits){
+            let revisedNum = tempNumStorage.pop();
+            revisedNum = revisedNum.toString()+input.value;
+            showOnDisplay(revisedNum)
+            // revisedNum = revisedNum * 1
+            tempNumStorage.push(revisedNum)
+        } else {
+            showOnDisplay('0.')
+            tempNumStorage.push('0.')
+        }
+
+        //logic here is to ensure multiple digits are treated as one number
+    } else if (multiDigits) {
         let revisedNum = tempNumStorage.pop();
         revisedNum = revisedNum.toString()+input.value;
         showOnDisplay(revisedNum)
         revisedNum = revisedNum * 1
-        console.log(revisedNum)
         tempNumStorage.push(revisedNum)
-        console.log(tempNumStorage)
     } else {
-        tempNumStorage.push(parseInt(input.value))
-        console.log('before doing numberCalculation: tempNumStorage', tempNumStorage)
+        tempNumStorage.push(input.value * 1)
         showOnDisplay(input.value)
-            if(waitForNumber){
-            tempResults = popFormula()
-            tempNumStorage.push(tempResults)
-            waitForNumber = false
-            console.log('did numberCalculation: tempNumOperation', tempOperation)
-        }
+        multiDigits = true;
     }
 }
 
+// calculation results are shown on screen after operator is pressed if a definitive solution can be found,
+// and we are not waiting for further number input.
 function justOperator(input){
-    if(decimals) decimals = false;
     if(input.value ==='='){
         if(tempResults){
             showOnDisplay(tempResults)
@@ -150,39 +188,37 @@ function justOperator(input){
     }
 }
 
+//special operations for each of these
 function iamSpecial(input){
     let modResults = ''
     switch (input.value){
+        //AC and C cases are distinct in their usage, therefore need to be differentiated.
         case 'AC':
         case 'C':
             acCounter = acCounter + 1
-            if (acCounter === 1 && tempNumStorage.length > 1 ){
-                console.log('I am in clear')
-                tempNumStorage.pop();
-                showOnDisplay(defaultDisplay);
-                input.textContent = 'AC'
-                if (tempOperation.length > 0){
-                    console.log('I am toggling operator')
+            showOnDisplay(defaultDisplay);
+            if (acCounter === 1){
+                if (tempNumStorage.length > 1 ) {
+                    tempNumStorage.pop();
+                } else if (tempOperation.length > 0){
                     const operator = document.getElementById(`${tempOperation[tempOperation.length-1]}`)
                     operator.classList.toggle('highlight')
                     tempToggleEl = operator
                 }
+                input.textContent = 'AC'
             } else if (acCounter === 2) {
-            showOnDisplay(defaultDisplay);
-            tempNumStorage = [];
-            tempOperation = [];
-            acCounter = 0;
-            input.textContent = 'C'
+                reload();
+                input.textContent = 'C'
             }
             break;
         case '%':
-            modResults = parseInt(results.textContent,10)/100
+            modResults = 1 * results.textContent/100
             showOnDisplay(modResults);
             tempNumStorage.pop()
             tempNumStorage.push(modResults)
             break;
         case '+/-':
-            modResults = parseInt(results.textContent,10)*-1
+            modResults = results.textContent*-1
             showOnDisplay(modResults);
             tempNumStorage.pop()
             tempNumStorage.push(modResults)
@@ -190,9 +226,8 @@ function iamSpecial(input){
     }
 }
 
+//division and multiplication has priority over other operations
 function checkCalcPriority(){
-    console.log('1stStep checkCalcPriority: tempNumStorage', tempNumStorage)
-    console.log('1stStep checkCalcPriority: tempNumOperation', tempOperation)
     const priorityList = ['\u00d7', '\u00f7']
     if (priorityList.includes(tempOperation[tempOperation.length-1])) {
         waitForNumber = true
@@ -225,3 +260,16 @@ function shiftFormula(){
     console.log(tempResults)
     return tempResults
 }
+
+
+//adding keyboard control to allow user input operations and numbers using keyboard
+document.addEventListener('keydown', (e)=>{
+    const keyName = e.key;
+    console.log('I pressed key', keyName)
+    if (keys.includes(keyName)) {
+        document.getElementById(keyName).click()
+    } else if (keyBoardToKeysMapping.has(keyName)){
+        document.getElementById(keyBoardToKeysMapping.get(keyName)).click()
+    }
+})
+
