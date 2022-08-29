@@ -148,6 +148,7 @@ function inputBoxToShoppingList(){
 
 function revertToDefaultList(){
     localStorage.removeItem('shoppingList')
+    localStorage.removeItem('strikeThroughList')
     selectedShoppingList = defaultList
     location.reload()
 }
