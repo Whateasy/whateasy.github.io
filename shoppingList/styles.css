@@ -171,6 +171,7 @@ ul {
 
 .divForTypes input[type='checkbox']{
     transition: all 0.5s linear;
+    accent-color: #C85F31;
 }
 
 .divForTypes input[type='checkbox']:hover {
