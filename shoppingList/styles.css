@@ -206,8 +206,16 @@ ul {
     }
 }
 
- footer {
+footer {
     font-family: 'Yeseva One', cursive;
     text-align: center;
     margin-top: auto;
+}
+
+footer .house::before {
+    content:'🏠';
+}
+
+footer span:nth-child(2)::before, footer span:nth-child(2)::after  {
+    content: '❤️';
 }
