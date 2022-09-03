@@ -12,7 +12,7 @@ const foodCupboard = ['Heading:Pantry','Tinned Tomatoes', 'Tinned Tuna', 'Anchov
     'Tomato Purees', 'Black Beans', 'Butter Beans', 'Peanut Butter', 'Strawberry Jam', 'Almond Flakes', 'Walnut', 'Raisins', 'Figs', 'Dates', 'Apricots' ]
 
 const grainsNoodles = ['Heading:Grains & Noodles','White Rice', 'Brown Rice', 'Quinoa', 'Pearl Barley', 'Bulgar Wheat', 'Couscous',
-    'Buccatini', 'Rigatoni', 'Lasagne Sheets', 'Pappardella', 'Udon', 'Egg Noodles' ]
+    'Buccatini', 'Rigatoni', 'Lasagne Sheets', 'Pappardella', 'Udon', 'Egg Noodles', 'Oats', 'Flour' ]
 
 const herb = ['Heading:Herbs','Fresh Mint', 'Parsley', 'Thyme', 'Sage', 'Cilantro', 'Rosemary', 'Lemongrass', 'Ginger', 'Chili']
 
