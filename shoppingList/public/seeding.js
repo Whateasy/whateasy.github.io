@@ -4,7 +4,7 @@ const meatList = ['Heading:Meat', 'Whole Chicken', 'Steak', 'Side Ribs', 'Short 
 const diaryEggsBakery = ['Heading:Diary Eggs & Bakery', 'Eggs', 'Bread', 'Milk', 'Cheddar Cheese', 'Parmesan Cheese', 'Mozzarella', 'Cured Meat', 'Butter', 'Tofu']
 
 const veggie = ['Heading:Veggies', 'Fennel', 'Kohlrabi', 'Potatoes', 'Radish', 'Cucumber', 'Tomatoes', 'Lemon', 'Lime', 'Avocado', 'Cauliflower',
-    'Broccoli', 'Asparagus', 'Celeriac', 'Rutabaga', 'Bean Sprouts', 'Sweet corns','Aubergine', 'Courgette', 'Pepper', 'Mushroom']
+    'Broccoli', 'Asparagus', 'Celeriac', 'Rutabaga', 'Bean Sprouts', 'Sweet corns','Aubergine', 'Courgette', 'Pepper', 'Mushroom', 'Brussels Sprouts']
 
 const fruits = ['Heading:Fruits','Apples', 'Bananas', 'Watermelon', 'Oranges', 'Pomelo', 'Grapes']
 
