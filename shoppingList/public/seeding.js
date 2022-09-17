@@ -4,7 +4,7 @@ const meatList = ['Heading:Meat', 'Whole Chicken', 'Steak', 'Side Ribs', 'Short 
 const diaryEggsBakery = ['Heading:Diary Eggs & Bakery', 'Eggs', 'Bread', 'Milk', 'Cheddar Cheese', 'Parmesan Cheese', 'Mozzarella', 'Cured Meat', 'Butter', 'Tofu']
 
 const veggie = ['Heading:Veggies', 'Fennel', 'Kohlrabi', 'Potatoes', 'Radish', 'Cucumber', 'Tomatoes', 'Lemon', 'Lime', 'Avocado', 'Cauliflower',
-    'Broccoli', 'Asparagus', 'Celeriac', 'Rutabaga', 'Bean Sprouts', 'Sweet corns','Aubergine', 'Courgette', 'Pepper', 'Mushroom', 'Brussels Sprouts']
+    'Broccoli', 'Asparagus', 'Celeriac', 'Rutabaga', 'Bean Sprouts', 'Sweet corns','Aubergine', 'Courgette', 'Pepper', 'Mushroom', 'Brussels Sprouts', 'Carrots']
 
 const fruits = ['Heading:Fruits','Apples', 'Bananas', 'Watermelon', 'Oranges', 'Pomelo', 'Grapes']
 
@@ -27,7 +27,7 @@ const household = ['Heading:Household','Washing-up Liquid', 'Dishwashing Tablets
 
 const medicineCabinet = ['Heading:Medicine Cabinet','Sun Tan Cream', 'Bug Spray', 'Pain Killers', 'Sanitary Towels', 'Band Aid' ]
 
-const freezer = ['Heading:Freezer', 'Frozen Sweetcorn', 'Frozen Peas', 'Ice Cream', 'Spinach']
+const freezer = ['Heading:Freezer', 'Frozen Sweetcorn', 'Frozen Peas', 'Ice Cream', 'Frozen Spinach']
 
 
 export const displayOrder = new Map([['Veggies', 1], ['Fruits', 2],  ['Meat', 3], ['Diary Eggs & Bakery', 4], ['Freezer', 5], ['Herbs', 6], ['Pantry', 7],
