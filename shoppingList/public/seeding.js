@@ -1,10 +1,10 @@
 const meatList = ['Heading:Meat', 'Whole Chicken', 'Steak', 'Side Ribs', 'Short Ribs', 'Chicken Thighs', 'Chicken Breast',
-    'Pork Belly', 'Bacon']
+    'Pork Belly', 'Bacon', 'Minced Meat', 'Salmon']
 
 const diaryEggsBakery = ['Heading:Diary Eggs & Bakery', 'Eggs', 'Bread', 'Milk', 'Cheddar Cheese', 'Parmesan Cheese', 'Mozzarella', 'Cured Meat', 'Butter', 'Tofu']
 
 const veggie = ['Heading:Veggies', 'Fennel', 'Kohlrabi', 'Potatoes', 'Radish', 'Cucumber', 'Tomatoes', 'Lemon', 'Lime', 'Avocado', 'Cauliflower',
-    'Broccoli', 'Asparagus', 'Celeriac', 'Rutabaga', 'Bean Sprouts', 'Sweet corns']
+    'Broccoli', 'Asparagus', 'Celeriac', 'Rutabaga', 'Bean Sprouts', 'Sweet corns','Aubergine', 'Courgette', 'Pepper', 'Mushroom', 'Brussels Sprouts', 'Carrots']
 
 const fruits = ['Heading:Fruits','Apples', 'Bananas', 'Watermelon', 'Oranges', 'Pomelo', 'Grapes']
 
@@ -12,9 +12,9 @@ const foodCupboard = ['Heading:Pantry','Tinned Tomatoes', 'Tinned Tuna', 'Anchov
     'Tomato Purees', 'Black Beans', 'Butter Beans', 'Peanut Butter', 'Strawberry Jam', 'Almond Flakes', 'Walnut', 'Raisins', 'Figs', 'Dates', 'Apricots' ]
 
 const grainsNoodles = ['Heading:Grains & Noodles','White Rice', 'Brown Rice', 'Quinoa', 'Pearl Barley', 'Bulgar Wheat', 'Couscous',
-    'Buccatini', 'Rigatoni', 'Lasagne Sheets', 'Pappardella', 'Udon', 'Egg Noodles' ]
+    'Buccatini', 'Rigatoni', 'Lasagne Sheets', 'Pappardella', 'Udon', 'Egg Noodles', 'Oats', 'Flour' ]
 
-const herb = ['Heading:Herbs','Fresh Mint', 'Parsley', 'Thyme', 'Sage', 'Cilantro', 'Rosemary', 'Lemongrass', 'Ginger']
+const herb = ['Heading:Herbs','Fresh Mint', 'Parsley', 'Thyme', 'Sage', 'Cilantro', 'Rosemary', 'Lemongrass', 'Ginger', 'Chili']
 
 const driedHerbSpices = ['Heading:Dried Herbs & Spices','Paprika', 'Cumin', 'Oregano', 'Salt', 'Black Pepper', 'Sugar', 'Ground Coriander', 'Ground Ginger', 'Chipotle']
 
@@ -22,11 +22,12 @@ const cookingSauces = ['Heading:Cooking Sauces','Fancy Olive Oil', 'Cooking Oliv
     'White Wine Vinegar', 'Franks Sauce', 'Mustard', 'Ketchup', 'Mirin', 'Fish Sauce', 'Mayonnaise', 'Worcester Sauce' ]
 
 const household = ['Heading:Household','Washing-up Liquid', 'Dishwashing Tablets', 'Rinse Aid', 'Hand Wash Liquid', 'Toilet Paper', 'Paper Towels',
-    'Toothpaste', 'Dental Floss', 'Shower Gel', 'Toilet Cleaner', 'All Purpose Cleaner', 'Bathroom Cleaner', 'Drain Unblocker', 'Laundry Tablets', 'Coffee Filter']
+    'Toothpaste', 'Dental Floss', 'Shower Gel', 'Toilet Cleaner', 'All Purpose Cleaner', 'Bathroom Cleaner', 'Drain Unblocker', 'Laundry Tablets', 
+                   'Coffee Filter', 'Cling Film', 'Parchment Paper', 'Foil']
 
 const medicineCabinet = ['Heading:Medicine Cabinet','Sun Tan Cream', 'Bug Spray', 'Pain Killers', 'Sanitary Towels', 'Band Aid' ]
 
-const freezer = ['Heading:Freezer', 'Frozen Sweetcorn', 'Frozen Peas', 'Ice Cream']
+const freezer = ['Heading:Freezer', 'Frozen Sweetcorn', 'Frozen Peas', 'Ice Cream', 'Frozen Spinach']
 
 
 export const displayOrder = new Map([['Veggies', 1], ['Fruits', 2],  ['Meat', 3], ['Diary Eggs & Bakery', 4], ['Freezer', 5], ['Herbs', 6], ['Pantry', 7],
