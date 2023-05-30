@@ -36,7 +36,7 @@ export const displayOrder = new Map([['Veggies', 1], ['Fruits', 2],  ['Meat', 3]
     ['Grains & Noodles',7], ['Dried Herbs & Spices', 8], ['Cooking Sauces', 9], ['Household', 10], ['Medicine Cabinet', 11]])
 
 export const defaultList = ['Bananas', 'Apples', 'Kohlrabi', 'Fennel', 'Lemon',
-    'Tomatoes', 'Avocado', 'Eggs', 'Milk', 'Bread', 'Chicken Thighs', 'Chicken Breast']
+    'Tomatoes', 'Avocado', 'Eggs', 'Milk', 'Bread', 'Chicken Thighs', 'Chicken Breast', 'Mozzarella']
 
 function createMap(...shoppingLists) {
     const shoppingItemByCategories = new Map();
