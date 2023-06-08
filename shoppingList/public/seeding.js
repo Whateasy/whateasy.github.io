@@ -26,7 +26,7 @@ const cookingSauces = ['Heading:Cooking Sauces','Fancy Olive Oil', 'Cooking Oliv
 
 const household = ['Heading:Household','Washing-up Liquid', 'Dishwashing Tablets', 'Rinse Aid', 'Hand Wash Liquid', 'Toilet Paper', 'Paper Towels',
     'Toothpaste', 'Dental Floss', 'Shower Gel', 'Toilet Cleaner', 'All Purpose Cleaner', 'Bathroom Cleaner', 'Drain Unblocker', 'Laundry Tablets', 
-                   'Coffee Filter', 'Cling Film', 'Parchment Paper', 'Foil', 'Moisturiser', 'Deodrant', 'Bin Bgas']
+                   'Coffee Filter', 'Cling Film', 'Parchment Paper', 'Foil', 'Moisturiser', 'Deodrant', 'Bin Bags']
 
 const medicineCabinet = ['Heading:Medicine Cabinet','Sun Tan Cream', 'Bug Spray', 'Pain Killers', 'Sanitary Towels', 'Band Aid', 'Vitamins' ]
 
