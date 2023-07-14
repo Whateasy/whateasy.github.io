@@ -1,0 +1,50 @@
+html {
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    margin: 0px 0px;
+    background-color: #1F2937;
+    color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    text-align: center;
+
+}
+
+h1 {
+    font-size: 50px;
+}
+
+p {
+    font-size: 25px;
+}
+
+p::before {
+    content: '❤️ ';
+}
+
+p::after {
+    content:' ❤️ ';
+}
+
+footer {
+    font-size: 20px;
+    text-align: center;
+    margin-top: auto;
+}
+
+@media screen and (min-width: 780px) {
+    h1 {
+        font-size: 100px;
+    }
+    p {
+        font-size: 50px;
+    }
+}
