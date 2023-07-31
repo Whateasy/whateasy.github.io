@@ -11,7 +11,7 @@ const fruits = ['Heading:Fruits','Apples', 'Bananas', 'Watermelon', 'Oranges', '
 
 const foodCupboard = ['Heading:Pantry','Tinned Tomatoes', 'Tinned Tuna', 'Anchovies', 'Olives', 'Capers', 'Banana Peppers',
     'Tomato Purees', 'Black Beans', 'Butter Beans', 'Peanut Butter', 'Strawberry Jam', 'Almond Flakes', 'Walnut', 'Raisins', 'Figs', 'Dates', 'Apricots', 'Honey', 'Maple Syrup', 'Coconut Milk',
-                     'Gherkins', 'Sesame Paste', 'Marmalade']
+                     'Gherkins', 'Sesame Paste', 'Marmalade', 'Granola']
 
 const grainsNoodles = ['Heading:Grains & Noodles','White Rice', 'Brown Rice', 'Quinoa', 'Pearl Barley', 'Bulgar Wheat', 'Couscous',
     'Buccatini', 'Rigatoni', 'Lasagne Sheets', 'Pappardella', 'Udon', 'Egg Noodles', 'Oats', 'Flour', 'Rice  Noodles' ]
