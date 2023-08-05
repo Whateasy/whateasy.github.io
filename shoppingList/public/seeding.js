@@ -1,5 +1,5 @@
 const meatList = ['Heading:Meat', 'Whole Chicken', 'Steak', 'Side Ribs', 'Short Ribs', 'Chicken Thighs', 'Chicken Breast',
-    'Pork Belly', 'Bacon', 'Minced Meat', 'Salmon', 'Mussels', 'Clams']
+    'Pork Belly', 'Bacon', 'Minced Meat', 'Salmon', 'Mussels', 'Clams', 'Sausage']
 
 const diaryEggsBakery = ['Heading:Diary Eggs & Bakery', 'Eggs', 'Bread', 'Milk', 'Cheddar Cheese', 'Parmesan Cheese', 'Mozzarella', 'Cured Meat', 'Butter', 'Tofu','Cream', 'Yogurt']
 
